@@ -1,7 +1,9 @@
-import Header from './components/Layout/Header'
+import Header from './components/Layout/Header';
 import AvailableMeals from './components/Meals/AvailableMeals';
-import MealSummary from './components/Meals/MealSummary'
+import MealSummary from './components/Meals/MealSummary';
 import Cart from './components/Cart/Cart';
+import CartProvider from './store/CartProvider'
+
 import { useState } from 'react';
 
 function App() {
@@ -16,12 +18,12 @@ function App() {
   }
 
   return (
-    <>
+    <CartProvider>
       {cartState && <Cart onHideCart = {hideCartHandler}/>}
       <Header onShowCart = {showCartHandler}/>
       <MealSummary/>
       <AvailableMeals/>
-    </>
+    </CartProvider>
   );
 }
 
